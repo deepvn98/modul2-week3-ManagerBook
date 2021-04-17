@@ -19,9 +19,11 @@ public class ManagerBook {
         public double getAmount() {
                 double total = 0;
                 for (Book o : books) {
-                        total += o.getPrice() * books.size();
+                        total += o.getPrice();
+
                 }
                 return total;
+
         }
 
         //        Thêm sách programmingbook
@@ -29,19 +31,19 @@ public class ManagerBook {
                 System.out.print("Nhập id sách: ");
                 Scanner scanner = new Scanner(System.in);
                 String id = scanner.nextLine();
-                System.out.print("Nhập id sách: ");
+                System.out.print("Nhập name sách: ");
                 Scanner scanner1 = new Scanner(System.in);
                 String name = scanner1.nextLine();
-                System.out.print("Nhập id sách: ");
+                System.out.print("Nhập price sách: ");
                 Scanner scanner2 = new Scanner(System.in);
                 double price = scanner2.nextDouble();
-                System.out.print("Nhập id sách: ");
+                System.out.print("Nhập author sách: ");
                 Scanner scanner3 = new Scanner(System.in);
                 String author = scanner3.nextLine();
-                System.out.print("Nhập id sách: ");
+                System.out.print("Nhập language sách: ");
                 Scanner scanner4 = new Scanner(System.in);
                 String language = scanner4.nextLine();
-                System.out.print("Nhập id sách: ");
+                System.out.print("Nhập framework sách: ");
                 Scanner scanner5 = new Scanner(System.in);
                 String framework = scanner5.nextLine();
                 Book programming = new ProgrammingBook(id, name, price, author, language, framework);
@@ -74,7 +76,7 @@ public class ManagerBook {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println(" mời bạn nhập sách bạn muốn thêm!");
                 while (true) {
-                        System.out.println("Nhấn 1:  nếu bạn muốn thêm sách programming! \n" + "Nhấn 2: nếu bạn muốn thêm sách fiction!\n" + "Nhấn 3: Hiển thị Tất cả Book!\n" + "Nhấn 4: nếu bạn muốn thoát!\n");
+                        System.out.println("Nhấn 1:  nếu bạn muốn thêm sách programming! \n" + "Nhấn 2: nếu bạn muốn thêm sách fiction!\n" + "Nhấn 3: nếu bạn muốn quay trở về Menu\n");
                         int input = scanner.nextInt();
                         switch (input) {
                                 case 1:
@@ -83,20 +85,44 @@ public class ManagerBook {
                                 case 2:
                                         addBookFiction();
                                         break;
-                                case 3:
-                                        showBook(books);
                                 default:
                                         break;
 
                         }
-                        if (input == 4) {
+                        if (input == 3) {
                                 break;
                         }
                 }
 
 
         }
+//        Menu Thêm , sửa, xoá
+        public void menuBook(){
+                while (true){
+                        System.out.println(" Nhấn 1: nếu bạn muốn add sách\n Nhấn 2: nếu bạn muốn sửa sách \n Nhấn 3: nếu bạn muốn xoá sách\n Nhấn 4: Hiển thị Tất cả Book!\n Nhấn 5: nếu bạn muốn thoát!");
+                        Scanner scanner = new Scanner(System.in);
+                        int input = scanner.nextInt();
+                        switch (input){
+                                case 1:
+                                        addBook();
+                                        break;
+                                case 2:
+                                        editBook();
+                                        break;
+                                case 3:
+                                        deleteBook();
+                                        break;
+                                case 4:
+                                        showBook(books);
 
+                                default:
+                                        break;
+                        }
+                  if (input == 5){
+                          break;
+                  }
+                }
+        }
 
         //        Xoá sách bằng cách tìm đến tên sách và xoá
         public void deleteBook() {
@@ -159,9 +185,11 @@ public class ManagerBook {
         }
 //Hiển thị thông tin sách
         public void showBook(ArrayList<Book> books) {
+                System.out.println("..........................");
                 for (Book o : books) {
-                        System.out.println(o.toString());
+                        System.out.println( o.toString());
                 }
+                System.out.println("Tổng tiền tất cả các loại sách là:" +getAmount());
         }
 
 }
