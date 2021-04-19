@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerBook {
-        private ArrayList<Book> books;
+        private  ArrayList<Book> books;
 
         public ArrayList<Book> getBooks() {
                 return books;
@@ -87,7 +87,6 @@ public class ManagerBook {
                                         break;
                                 default:
                                         break;
-
                         }
                         if (input == 3) {
                                 break;
@@ -110,10 +109,12 @@ public class ManagerBook {
                                         editBook();
                                         break;
                                 case 3:
+
                                         deleteBook();
                                         break;
                                 case 4:
-                                        showBook(books);
+                                        showBook();
+                                        break;
 
                                 default:
                                         break;
@@ -131,7 +132,8 @@ public class ManagerBook {
                 String name = scanner.nextLine();
                 for (int i = 0; i < books.size(); i++) {
                         if (books.get(i).getName().equals(name)) {
-                                books.remove(books.get(i));
+                                books.remove(i);
+                                i--;
                         }
                 }
         }
@@ -184,7 +186,7 @@ public class ManagerBook {
                 }
         }
 //Hiển thị thông tin sách
-        public void showBook(ArrayList<Book> books) {
+        public void showBook() {
                 System.out.println("..........................");
                 for (Book o : books) {
                         System.out.println( o.toString());
